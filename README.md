@@ -1,2 +1,2 @@
-# Diamentowa Liga
+# Diamond League
 Rating system and Football games attendance and scoresheet tracker

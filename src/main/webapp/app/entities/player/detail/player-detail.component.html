@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (player(); as playerRef) {
+      <div>
+        <h2 data-cy="playerDetailsHeading"><span jhiTranslate="diamondLeagueApp.player.detail.title">Player</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ playerRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.firstName">First Name</span></dt>
+          <dd>
+            <span>{{ playerRef.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ playerRef.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.nickname">Nickname</span></dt>
+          <dd>
+            <span>{{ playerRef.nickname }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.height">Height</span></dt>
+          <dd>
+            <span>{{ playerRef.height }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.yearOfBirth">Year Of Birth</span></dt>
+          <dd>
+            <span>{{ playerRef.yearOfBirth }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.preferredPosition">Preferred Position</span></dt>
+          <dd>
+            <span [jhiTranslate]="'diamondLeagueApp.Position.' + (playerRef.preferredPosition ?? 'null')">{{
+              { null: '', DEF: 'DEF', MID: 'MID', FW: 'FW' }[playerRef.preferredPosition ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.favouriteClub">Favourite Club</span></dt>
+          <dd>
+            @if (player()!.favouriteClub) {
+              <div>
+                <a [routerLink]="['/club', player()!.favouriteClub?.id, 'view']">{{ playerRef.favouriteClub?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/player', playerRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

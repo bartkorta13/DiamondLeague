@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-game-team-heading" data-cy="GameTeamCreateUpdateHeading" jhiTranslate="diamondLeagueApp.gameTeam.home.createOrEditLabel">
+        Create or edit a Game Team
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="diamondLeagueApp.gameTeam.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let goalsRef = editForm.get('goals')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_goals" jhiTranslate="diamondLeagueApp.gameTeam.goals">Goals</label>
+          <input type="number" class="form-control" name="goals" id="field_goals" data-cy="goals" formControlName="goals" />
+          @if (goalsRef.invalid && (goalsRef.dirty || goalsRef.touched)) {
+            <div>
+              @if (editForm.get('goals')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >This field should be at least 0.</small
+                >
+              }
+              @if (editForm.get('goals')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '100' }"
+                  >This field cannot be more than 100.</small
+                >
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('goals')?.errors?.number" jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_captain" jhiTranslate="diamondLeagueApp.gameTeam.captain">Captain</label>
+          <select
+            class="form-control"
+            id="field_captain"
+            data-cy="captain"
+            name="captain"
+            formControlName="captain"
+            [compareWith]="comparePlayer"
+          >
+            @if (editForm.get(['captain'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (playerOption of playersSharedCollection; track $index) {
+              <option [ngValue]="playerOption">{{ playerOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['captain'])!.invalid && (editForm.get(['captain'])!.dirty || editForm.get(['captain'])!.touched)) {
+          <div>
+            @if (editForm.get(['captain'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_game" jhiTranslate="diamondLeagueApp.gameTeam.game">Game</label>
+          <select class="form-control" id="field_game" data-cy="game" name="game" formControlName="game" [compareWith]="compareGame">
+            @if (editForm.get(['game'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (gameOption of gamesSharedCollection; track $index) {
+              <option [ngValue]="gameOption">{{ gameOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['game'])!.invalid && (editForm.get(['game'])!.dirty || editForm.get(['game'])!.touched)) {
+          <div>
+            @if (editForm.get(['game'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

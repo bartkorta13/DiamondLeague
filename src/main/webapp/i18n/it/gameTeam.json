@@ -1,0 +1,27 @@
+{
+  "diamondLeagueApp": {
+    "gameTeam": {
+      "home": {
+        "title": "GameTeams",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Game Team",
+        "createOrEditLabel": "Genera o modifica un Game Team",
+        "notFound": "No Game Teams found"
+      },
+      "created": "&Egrave; stato generato un nuovo Game Team con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Game Team identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Game Team con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Game Team {{ id }}?"
+      },
+      "detail": {
+        "title": "Game Team"
+      },
+      "id": "ID",
+      "goals": "Goals",
+      "playerGame": "Player Game",
+      "captain": "Captain",
+      "game": "Game"
+    }
+  }
+}

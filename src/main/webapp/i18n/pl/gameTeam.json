@@ -1,0 +1,27 @@
+{
+  "diamondLeagueApp": {
+    "gameTeam": {
+      "home": {
+        "title": "Drużyna",
+        "refreshListLabel": "Odśwież listę",
+        "createLabel": "Dodaj Drużynę",
+        "createOrEditLabel": "Dodaj lub edytuj: Drużynę",
+        "notFound": "Nie znaleziono Drużyn"
+      },
+      "created": "Utworzono nowy obiekt typu Drużyna z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Drużyna z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Drużyna z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Drużynę {{ id }}?"
+      },
+      "detail": {
+        "title": "Drużyny"
+      },
+      "id": "ID",
+      "goals": "Gole",
+      "playerGame": "Mecz zawodnika",
+      "captain": "Kapitan",
+      "game": "Mecz"
+    }
+  }
+}

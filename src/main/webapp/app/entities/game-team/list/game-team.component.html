@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="GameTeamHeading">
+    <span jhiTranslate="diamondLeagueApp.gameTeam.home.title">Game Teams</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="diamondLeagueApp.gameTeam.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-game-team"
+        [routerLink]="['/game-team/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="diamondLeagueApp.gameTeam.home.createLabel">Create a new Game Team</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (gameTeams().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="diamondLeagueApp.gameTeam.home.notFound">No Game Teams found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="goals">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.gameTeam.goals">Goals</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="captain.id">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.gameTeam.captain">Captain</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="game.id">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.gameTeam.game">Game</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (gameTeam of gameTeams(); track trackId(gameTeam)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/game-team', gameTeam.id, 'view']">{{ gameTeam.id }}</a>
+              </td>
+              <td>{{ gameTeam.goals }}</td>
+              <td>
+                @if (gameTeam.captain) {
+                  <div>
+                    <a [routerLink]="['/player', gameTeam.captain.id, 'view']">{{ gameTeam.captain.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (gameTeam.game) {
+                  <div>
+                    <a [routerLink]="['/game', gameTeam.game.id, 'view']">{{ gameTeam.game.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/game-team', gameTeam.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/game-team', gameTeam.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(gameTeam)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

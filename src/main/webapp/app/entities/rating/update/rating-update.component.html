@@ -1,0 +1,214 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-rating-heading" data-cy="RatingCreateUpdateHeading" jhiTranslate="diamondLeagueApp.rating.home.createOrEditLabel">
+        Create or edit a Rating
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="diamondLeagueApp.rating.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let dateRef = editForm.get('date')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_date" jhiTranslate="diamondLeagueApp.rating.date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (dateRef.invalid && (dateRef.dirty || dateRef.touched)) {
+            <div>
+              @if (editForm.get('date')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('date')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let attackRef = editForm.get('attack')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_attack" jhiTranslate="diamondLeagueApp.rating.attack">Attack</label>
+          <input type="number" class="form-control" name="attack" id="field_attack" data-cy="attack" formControlName="attack" />
+          @if (attackRef.invalid && (attackRef.dirty || attackRef.touched)) {
+            <div>
+              @if (editForm.get('attack')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('attack')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >This field should be at least 1.</small
+                >
+              }
+              @if (editForm.get('attack')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '99' }"
+                  >This field cannot be more than 99.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('attack')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let defenseRef = editForm.get('defense')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_defense" jhiTranslate="diamondLeagueApp.rating.defense">Defense</label>
+          <input type="number" class="form-control" name="defense" id="field_defense" data-cy="defense" formControlName="defense" />
+          @if (defenseRef.invalid && (defenseRef.dirty || defenseRef.touched)) {
+            <div>
+              @if (editForm.get('defense')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('defense')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >This field should be at least 1.</small
+                >
+              }
+              @if (editForm.get('defense')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '99' }"
+                  >This field cannot be more than 99.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('defense')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let engagementRef = editForm.get('engagement')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_engagement" jhiTranslate="diamondLeagueApp.rating.engagement">Engagement</label>
+          <input
+            type="number"
+            class="form-control"
+            name="engagement"
+            id="field_engagement"
+            data-cy="engagement"
+            formControlName="engagement"
+          />
+          @if (engagementRef.invalid && (engagementRef.dirty || engagementRef.touched)) {
+            <div>
+              @if (editForm.get('engagement')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('engagement')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >This field should be at least 1.</small
+                >
+              }
+              @if (editForm.get('engagement')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '99' }"
+                  >This field cannot be more than 99.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('engagement')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let overallRef = editForm.get('overall')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_overall" jhiTranslate="diamondLeagueApp.rating.overall">Overall</label>
+          <input type="number" class="form-control" name="overall" id="field_overall" data-cy="overall" formControlName="overall" />
+          @if (overallRef.invalid && (overallRef.dirty || overallRef.touched)) {
+            <div>
+              @if (editForm.get('overall')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('overall')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '70' }"
+                  >This field should be at least 70.</small
+                >
+              }
+              @if (editForm.get('overall')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '99' }"
+                  >This field cannot be more than 99.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('overall')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_player" jhiTranslate="diamondLeagueApp.rating.player">Player</label>
+          <select
+            class="form-control"
+            id="field_player"
+            data-cy="player"
+            name="player"
+            formControlName="player"
+            [compareWith]="comparePlayer"
+          >
+            @if (editForm.get(['player'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (playerOption of playersSharedCollection; track $index) {
+              <option [ngValue]="playerOption">{{ playerOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['player'])!.invalid && (editForm.get(['player'])!.dirty || editForm.get(['player'])!.touched)) {
+          <div>
+            @if (editForm.get(['player'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "diamondLeagueApp": {
+    "club": {
+      "home": {
+        "title": "Ulubione Kluby",
+        "refreshListLabel": "Odśwież listę",
+        "createLabel": "Dodaj Klub",
+        "createOrEditLabel": "Dodaj lub edytuj: Klub",
+        "notFound": "Nie znaleziono Klubów"
+      },
+      "created": "Utworzono nowy obiekt typu Klub z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Klub z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Klub z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Klub {{ id }}?"
+      },
+      "detail": {
+        "title": "Ulubione Kluby"
+      },
+      "id": "ID",
+      "name": "Nazwa",
+      "logoPath": "Ścieżka do Logo",
+      "player": "Zawodnik"
+    }
+  }
+}

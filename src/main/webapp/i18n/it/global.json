@@ -6,9 +6,16 @@
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entità",
+        "main": "Gestione della Lega",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "adminAuthority": "Autorità",
+        "player": "Calciatore",
+        "club": "Club preferiti",
+        "rating": "Valutazione dei giocatori",
+        "game": "Gioco",
+        "gameTeam": "Squadre",
+        "playerGame": "Partite di calcio",
+        "stadium": "Stadi"
       },
       "account": {
         "main": "Utente",
@@ -121,9 +128,9 @@
       "datetimelocal": "Questo campo dovrebbe essere data e ora."
     },
     "filters": {
-      "set": "Following filters are set",
-      "clear": "Clear filter",
-      "clearAll": "Clear all filters"
+      "set": "Sono impostati i seguenti filtri",
+      "clear": "Cancella filtro",
+      "clearAll": "Cancella tutti i filtri"
     }
   },
   "error": {

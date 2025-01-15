@@ -1,0 +1,26 @@
+{
+  "diamondLeagueApp": {
+    "club": {
+      "home": {
+        "title": "Clubs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Club",
+        "createOrEditLabel": "Genera o modifica un Club",
+        "notFound": "No Clubs found"
+      },
+      "created": "&Egrave; stato generato un nuovo Club con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Club identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Club con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Club {{ id }}?"
+      },
+      "detail": {
+        "title": "Club"
+      },
+      "id": "ID",
+      "name": "Name",
+      "logoPath": "Logo Path",
+      "player": "Player"
+    }
+  }
+}

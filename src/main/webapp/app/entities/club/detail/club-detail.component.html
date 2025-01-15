@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (club(); as clubRef) {
+      <div>
+        <h2 data-cy="clubDetailsHeading"><span jhiTranslate="diamondLeagueApp.club.detail.title">Club</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ clubRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.club.name">Name</span></dt>
+          <dd>
+            <span>{{ clubRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.club.logoPath">Logo Path</span></dt>
+          <dd>
+            <span>{{ clubRef.logoPath }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/club', clubRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

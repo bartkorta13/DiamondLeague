@@ -1,0 +1,139 @@
+<div>
+  <h2 id="page-heading" data-cy="PlayerHeading">
+    <span jhiTranslate="diamondLeagueApp.player.home.title">Players</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="diamondLeagueApp.player.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-player"
+        [routerLink]="['/player/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="diamondLeagueApp.player.home.createLabel">Create a new Player</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (players().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="diamondLeagueApp.player.home.notFound">No Players found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="firstName">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.firstName">First Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastName">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.lastName">Last Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nickname">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.nickname">Nickname</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="height">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.height">Height</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="yearOfBirth">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.yearOfBirth">Year Of Birth</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="preferredPosition">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.preferredPosition">Preferred Position</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="favouriteClub.id">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.favouriteClub">Favourite Club</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (player of players(); track trackId(player)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/player', player.id, 'view']">{{ player.id }}</a>
+              </td>
+              <td>{{ player.firstName }}</td>
+              <td>{{ player.lastName }}</td>
+              <td>{{ player.nickname }}</td>
+              <td>{{ player.height }}</td>
+              <td>{{ player.yearOfBirth }}</td>
+              <td [jhiTranslate]="'diamondLeagueApp.Position.' + (player.preferredPosition ?? 'null')">
+                {{ { null: '', DEF: 'DEF', MID: 'MID', FW: 'FW' }[player.preferredPosition ?? 'null'] }}
+              </td>
+              <td>
+                @if (player.favouriteClub) {
+                  <div>
+                    <a [routerLink]="['/club', player.favouriteClub.id, 'view']">{{ player.favouriteClub.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/player', player.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/player', player.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(player)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

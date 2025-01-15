@@ -1,0 +1,26 @@
+{
+  "diamondLeagueApp": {
+    "game": {
+      "home": {
+        "title": "Mecze",
+        "refreshListLabel": "Odśwież Listę",
+        "createLabel": "Dodaj Mecz",
+        "createOrEditLabel": "Dodaj lub edytuj: Mecz",
+        "notFound": "Nie znaleziono Meczy"
+      },
+      "created": "Utworzono nowy obiekt typu Mecz z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Mecz z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Mecz z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Mecz {{ id }}?"
+      },
+      "detail": {
+        "title": "Mecz"
+      },
+      "id": "ID",
+      "date": "Data",
+      "gameTeam": "Drużyna",
+      "stadium": "Stadion"
+    }
+  }
+}

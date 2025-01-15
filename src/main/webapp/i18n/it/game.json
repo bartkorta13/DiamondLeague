@@ -1,0 +1,26 @@
+{
+  "diamondLeagueApp": {
+    "game": {
+      "home": {
+        "title": "Games",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Game",
+        "createOrEditLabel": "Genera o modifica un Game",
+        "notFound": "No Games found"
+      },
+      "created": "&Egrave; stato generato un nuovo Game con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Game identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Game con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Game {{ id }}?"
+      },
+      "detail": {
+        "title": "Game"
+      },
+      "id": "ID",
+      "date": "Date",
+      "gameTeam": "Game Team",
+      "stadium": "Stadium"
+    }
+  }
+}

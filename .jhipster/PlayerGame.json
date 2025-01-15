@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20250115131332"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "goals",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "assists",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "attackScore",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "defenseScore",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "PlayerGame",
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "relationshipName": "player",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "gameTeam",
+      "relationshipName": "gameTeam",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,29 @@
+{
+  "diamondLeagueApp": {
+    "rating": {
+      "home": {
+        "title": "Rating",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Rating",
+        "createOrEditLabel": "Dodaj lub edytuj: Rating",
+        "notFound": "No Ratings found"
+      },
+      "created": "Utworzono nowy obiekt typu Rating z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Rating z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Rating z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Rating {{ id }}?"
+      },
+      "detail": {
+        "title": "Rating"
+      },
+      "id": "ID",
+      "date": "Date",
+      "attack": "Attack",
+      "defense": "Defense",
+      "engagement": "Engagement",
+      "overall": "Overall",
+      "player": "Player"
+    }
+  }
+}

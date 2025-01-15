@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (playerGame(); as playerGameRef) {
+      <div>
+        <h2 data-cy="playerGameDetailsHeading"><span jhiTranslate="diamondLeagueApp.playerGame.detail.title">Player Game</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ playerGameRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.goals">Goals</span></dt>
+          <dd>
+            <span>{{ playerGameRef.goals }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.assists">Assists</span></dt>
+          <dd>
+            <span>{{ playerGameRef.assists }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.attackScore">Attack Score</span></dt>
+          <dd>
+            <span>{{ playerGameRef.attackScore }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.defenseScore">Defense Score</span></dt>
+          <dd>
+            <span>{{ playerGameRef.defenseScore }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.player">Player</span></dt>
+          <dd>
+            @if (playerGame()!.player) {
+              <div>
+                <a [routerLink]="['/player', playerGame()!.player?.id, 'view']">{{ playerGameRef.player?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.playerGame.gameTeam">Game Team</span></dt>
+          <dd>
+            @if (playerGame()!.gameTeam) {
+              <div>
+                <a [routerLink]="['/game-team', playerGame()!.gameTeam?.id, 'view']">{{ playerGameRef.gameTeam?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/player-game', playerGameRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

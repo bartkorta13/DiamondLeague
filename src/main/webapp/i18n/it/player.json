@@ -1,0 +1,33 @@
+{
+  "diamondLeagueApp": {
+    "player": {
+      "home": {
+        "title": "Players",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Player",
+        "createOrEditLabel": "Genera o modifica un Player",
+        "notFound": "No Players found"
+      },
+      "created": "&Egrave; stato generato un nuovo Player con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Player identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Player con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Player {{ id }}?"
+      },
+      "detail": {
+        "title": "Player"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "nickname": "Nickname",
+      "height": "Height",
+      "yearOfBirth": "Year Of Birth",
+      "preferredPosition": "Preferred Position",
+      "rating": "Rating",
+      "playerGame": "Player Game",
+      "gameTeam": "Game Team",
+      "favouriteClub": "Favourite Club"
+    }
+  }
+}

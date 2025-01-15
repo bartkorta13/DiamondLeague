@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250115131333"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "50",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "imagePath",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Stadium",
+  "relationships": [
+    {
+      "otherEntityName": "game",
+      "otherEntityRelationshipName": "stadium",
+      "relationshipName": "game",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

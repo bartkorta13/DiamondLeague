@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (gameTeam(); as gameTeamRef) {
+      <div>
+        <h2 data-cy="gameTeamDetailsHeading"><span jhiTranslate="diamondLeagueApp.gameTeam.detail.title">Game Team</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ gameTeamRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.gameTeam.goals">Goals</span></dt>
+          <dd>
+            <span>{{ gameTeamRef.goals }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.gameTeam.captain">Captain</span></dt>
+          <dd>
+            @if (gameTeam()!.captain) {
+              <div>
+                <a [routerLink]="['/player', gameTeam()!.captain?.id, 'view']">{{ gameTeamRef.captain?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.gameTeam.game">Game</span></dt>
+          <dd>
+            @if (gameTeam()!.game) {
+              <div>
+                <a [routerLink]="['/game', gameTeam()!.game?.id, 'view']">{{ gameTeamRef.game?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/game-team', gameTeamRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

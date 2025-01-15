@@ -1,0 +1,33 @@
+{
+  "diamondLeagueApp": {
+    "player": {
+      "home": {
+        "title": "Zawodnicy",
+        "refreshListLabel": "Odśwież listę",
+        "createLabel": "Dodaj Zawodnika",
+        "createOrEditLabel": "Dodaj lub edytuj: Zawodnika",
+        "notFound": "Nie znaleziono Zawodników"
+      },
+      "created": "Utworzono nowy obiekt typu Zawodnik z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Zawodnik z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Zawodnik z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Zawodnika {{ id }}?"
+      },
+      "detail": {
+        "title": "Zawodnicy"
+      },
+      "id": "ID",
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "nickname": "Pseudonim",
+      "height": "Wzrost",
+      "yearOfBirth": "Rok urodzenia",
+      "preferredPosition": "Pozycja na boisku",
+      "rating": "Rating",
+      "playerGame": "Mecz zawodnika",
+      "gameTeam": "Drużyna zawodnika",
+      "favouriteClub": "Ulubiony Klub"
+    }
+  }
+}

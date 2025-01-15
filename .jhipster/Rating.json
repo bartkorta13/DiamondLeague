@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20250115131329"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "attack",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "99",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "defense",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "99",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "engagement",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "99",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "overall",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "99",
+      "fieldValidateRulesMin": "70"
+    }
+  ],
+  "name": "Rating",
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "relationshipName": "player",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

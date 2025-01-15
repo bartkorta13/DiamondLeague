@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (game(); as gameRef) {
+      <div>
+        <h2 data-cy="gameDetailsHeading"><span jhiTranslate="diamondLeagueApp.game.detail.title">Game</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ gameRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.game.date">Date</span></dt>
+          <dd>
+            <span>{{ gameRef.date | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.game.stadium">Stadium</span></dt>
+          <dd>
+            @if (game()!.stadium) {
+              <div>
+                <a [routerLink]="['/stadium', game()!.stadium?.id, 'view']">{{ gameRef.stadium?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/game', gameRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

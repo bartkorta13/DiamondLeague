@@ -6,9 +6,16 @@
       "home": "Strona domowa",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Encje",
+        "main": "Zarządzanie Ligą",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "adminAuthority": "Role",
+        "player": "Zawodnicy",
+        "club": "Ulubione Kluby",
+        "rating": "Rating Graczy",
+        "game": "Mecze",
+        "gameTeam": "Drużyny",
+        "playerGame": "Mecze gracza",
+        "stadium": "Stadiony"
       },
       "account": {
         "main": "Konto",

@@ -1,0 +1,29 @@
+{
+  "diamondLeagueApp": {
+    "playerGame": {
+      "home": {
+        "title": "Player Game",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Player Game",
+        "createOrEditLabel": "Dodaj lub edytuj: Player Game",
+        "notFound": "No Player Games found"
+      },
+      "created": "Utworzono nowy obiekt typu Player Game z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Player Game z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Player Game z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Player Game {{ id }}?"
+      },
+      "detail": {
+        "title": "Player Game"
+      },
+      "id": "ID",
+      "goals": "Goals",
+      "assists": "Assists",
+      "attackScore": "Attack Score",
+      "defenseScore": "Defense Score",
+      "player": "Player",
+      "gameTeam": "Game Team"
+    }
+  }
+}

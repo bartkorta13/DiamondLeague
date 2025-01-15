@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250115131331"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "goals",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "name": "GameTeam",
+  "relationships": [
+    {
+      "otherEntityName": "playerGame",
+      "otherEntityRelationshipName": "gameTeam",
+      "relationshipName": "playerGame",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "player",
+      "relationshipName": "captain",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "game",
+      "relationshipName": "game",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

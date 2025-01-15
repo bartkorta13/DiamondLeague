@@ -1,0 +1,82 @@
+{
+  "annotations": {
+    "changelogDate": "20250115131327"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "40",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "40",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "nickname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "40",
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "250",
+      "fieldValidateRulesMin": "100"
+    },
+    {
+      "fieldName": "yearOfBirth",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "2050",
+      "fieldValidateRulesMin": "1900"
+    },
+    {
+      "fieldName": "preferredPosition",
+      "fieldType": "Position",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DEF,MID,FW"
+    }
+  ],
+  "name": "Player",
+  "relationships": [
+    {
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "rating",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "playerGame",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerGame",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "gameTeam",
+      "otherEntityRelationshipName": "captain",
+      "relationshipName": "gameTeam",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "club",
+      "relationshipName": "favouriteClub",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,26 @@
+{
+  "diamondLeagueApp": {
+    "stadium": {
+      "home": {
+        "title": "Stadium",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Stadium",
+        "createOrEditLabel": "Dodaj lub edytuj: Stadium",
+        "notFound": "No Stadiums found"
+      },
+      "created": "Utworzono nowy obiekt typu Stadium z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Stadium z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Stadium z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Stadium {{ id }}?"
+      },
+      "detail": {
+        "title": "Stadium"
+      },
+      "id": "ID",
+      "name": "Name",
+      "imagePath": "Image Path",
+      "game": "Game"
+    }
+  }
+}

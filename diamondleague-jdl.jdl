@@ -1,0 +1,59 @@
+entity Player {
+    firstName String required min(2) max(40)
+    lastName String required min(2) max(40)
+    nickname String required unique min(3) max(20)
+    height Integer min(100) max(250)
+    yearOfBirth Integer min(1900) max(2050)
+  	preferredPosition Position required
+}
+
+entity Club {
+	name String required unique min(3) max(50) 
+    logoPath String
+}
+
+entity Rating {
+    date Instant required
+    attack Integer required min(1) max(99)
+    defense Integer required min(1) max(99)
+    engagement Integer required min(1) max(99)
+    overall Integer required min(70) max(99)
+}
+
+entity Game {
+    date Instant required
+    winners GameTeam
+}
+
+entity GameTeam {
+    goals Integer min(0) max(100)
+}
+
+entity PlayerGame {
+    goals Integer required min(0) max(100)
+    assists Integer required min(0) max(100)
+    attackScore Double
+    defenseScore Double
+}
+
+entity Stadium {
+    name String required min(2) max(50)
+    imagePath String
+}
+
+enum Position {
+    DEF, MID, FW
+}
+
+relationship OneToMany {
+	Player to Rating{player required}
+    Player to PlayerGame{player required}
+    Player to GameTeam{captain required}
+	GameTeam to PlayerGame{gameTeam required}
+    Stadium to Game{stadium required}
+    Club to Player{favouriteClub}
+    Game to GameTeam{game required}
+}
+
+dto * with mapstruct
+service * with serviceImpl

@@ -24,6 +24,7 @@ type PlayerFormGroupContent = {
   height: FormControl<IPlayer['height']>;
   yearOfBirth: FormControl<IPlayer['yearOfBirth']>;
   preferredPosition: FormControl<IPlayer['preferredPosition']>;
+  appUser: FormControl<IPlayer['appUser']>;
   favouriteClub: FormControl<IPlayer['favouriteClub']>;
 };
 
@@ -62,6 +63,7 @@ export class PlayerFormService {
       preferredPosition: new FormControl(playerRawValue.preferredPosition, {
         validators: [Validators.required],
       }),
+      appUser: new FormControl(playerRawValue.appUser),
       favouriteClub: new FormControl(playerRawValue.favouriteClub),
     });
   }

@@ -41,6 +41,10 @@
               { null: '', DEF: 'DEF', MID: 'MID', FW: 'FW' }[playerRef.preferredPosition ?? 'null']
             }}</span>
           </dd>
+          <dt><span jhiTranslate="diamondLeagueApp.player.appUser">App User</span></dt>
+          <dd>
+            <span>{{ playerRef.appUser?.id }}</span>
+          </dd>
           <dt><span jhiTranslate="diamondLeagueApp.player.favouriteClub">Favourite Club</span></dt>
           <dd>
             @if (player()!.favouriteClub) {

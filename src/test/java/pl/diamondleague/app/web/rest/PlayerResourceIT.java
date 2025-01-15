@@ -24,6 +24,7 @@ import pl.diamondleague.app.IntegrationTest;
 import pl.diamondleague.app.domain.Player;
 import pl.diamondleague.app.domain.enumeration.Position;
 import pl.diamondleague.app.repository.PlayerRepository;
+import pl.diamondleague.app.repository.UserRepository;
 import pl.diamondleague.app.service.dto.PlayerDTO;
 import pl.diamondleague.app.service.mapper.PlayerMapper;
 
@@ -64,6 +65,9 @@ class PlayerResourceIT {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private PlayerMapper playerMapper;

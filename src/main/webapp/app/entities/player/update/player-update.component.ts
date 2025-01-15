@@ -7,6 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/service/user.service';
 import { IClub } from 'app/entities/club/club.model';
 import { ClubService } from 'app/entities/club/service/club.service';
 import { Position } from 'app/entities/enumerations/position.model';
@@ -24,15 +26,19 @@ export class PlayerUpdateComponent implements OnInit {
   player: IPlayer | null = null;
   positionValues = Object.keys(Position);
 
+  usersSharedCollection: IUser[] = [];
   clubsSharedCollection: IClub[] = [];
 
   protected playerService = inject(PlayerService);
   protected playerFormService = inject(PlayerFormService);
+  protected userService = inject(UserService);
   protected clubService = inject(ClubService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: PlayerFormGroup = this.playerFormService.createPlayerFormGroup();
+
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   compareClub = (o1: IClub | null, o2: IClub | null): boolean => this.clubService.compareClub(o1, o2);
 
@@ -84,10 +90,17 @@ export class PlayerUpdateComponent implements OnInit {
     this.player = player;
     this.playerFormService.resetForm(this.editForm, player);
 
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, player.appUser);
     this.clubsSharedCollection = this.clubService.addClubToCollectionIfMissing<IClub>(this.clubsSharedCollection, player.favouriteClub);
   }
 
   protected loadRelationshipsOptions(): void {
+    this.userService
+      .query()
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.player?.appUser)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
+
     this.clubService
       .query()
       .pipe(map((res: HttpResponse<IClub[]>) => res.body ?? []))

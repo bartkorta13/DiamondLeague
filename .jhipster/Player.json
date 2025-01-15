@@ -50,6 +50,13 @@
   "name": "Player",
   "relationships": [
     {
+      "otherEntityName": "user",
+      "relationshipName": "appUser",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
       "otherEntityName": "rating",
       "otherEntityRelationshipName": "player",
       "relationshipName": "rating",

@@ -41,7 +41,7 @@ public class PlayerGame implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser", "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
     private Player player;
 
     @ManyToOne(optional = false)

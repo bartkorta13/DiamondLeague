@@ -1,3 +1,4 @@
+import { IUser } from 'app/entities/user/user.model';
 import { IClub } from 'app/entities/club/club.model';
 import { Position } from 'app/entities/enumerations/position.model';
 
@@ -9,6 +10,7 @@ export interface IPlayer {
   height?: number | null;
   yearOfBirth?: number | null;
   preferredPosition?: keyof typeof Position | null;
+  appUser?: Pick<IUser, 'id'> | null;
   favouriteClub?: Pick<IClub, 'id'> | null;
 }
 

@@ -82,6 +82,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="appUser.id">
+              <div class="d-flex">
+                <span jhiTranslate="diamondLeagueApp.player.appUser">App User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="favouriteClub.id">
               <div class="d-flex">
                 <span jhiTranslate="diamondLeagueApp.player.favouriteClub">Favourite Club</span>
@@ -104,6 +110,9 @@
               <td>{{ player.yearOfBirth }}</td>
               <td [jhiTranslate]="'diamondLeagueApp.Position.' + (player.preferredPosition ?? 'null')">
                 {{ { null: '', DEF: 'DEF', MID: 'MID', FW: 'FW' }[player.preferredPosition ?? 'null'] }}
+              </td>
+              <td>
+                {{ player.appUser?.id }}
               </td>
               <td>
                 @if (player.favouriteClub) {

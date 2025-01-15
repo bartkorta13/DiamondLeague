@@ -36,6 +36,8 @@ public class PlayerDTO implements Serializable {
     @NotNull
     private Position preferredPosition;
 
+    private UserDTO appUser;
+
     private ClubDTO favouriteClub;
 
     public Long getId() {
@@ -94,6 +96,14 @@ public class PlayerDTO implements Serializable {
         this.preferredPosition = preferredPosition;
     }
 
+    public UserDTO getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(UserDTO appUser) {
+        this.appUser = appUser;
+    }
+
     public ClubDTO getFavouriteClub() {
         return favouriteClub;
     }
@@ -134,6 +144,7 @@ public class PlayerDTO implements Serializable {
             ", height=" + getHeight() +
             ", yearOfBirth=" + getYearOfBirth() +
             ", preferredPosition='" + getPreferredPosition() + "'" +
+            ", appUser=" + getAppUser() +
             ", favouriteClub=" + getFavouriteClub() +
             "}";
     }

@@ -54,5 +54,9 @@ relationship OneToMany {
     Game to GameTeam{game required}
 }
 
+relationship OneToOne {
+    Player{appUser} to User with builtInEntity
+}
+
 dto * with mapstruct
 service * with serviceImpl

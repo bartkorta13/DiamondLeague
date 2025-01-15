@@ -32,7 +32,7 @@ public class Club implements Serializable {
     private String logoPath;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "favouriteClub")
-    @JsonIgnoreProperties(value = { "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser", "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
     private Set<Player> players = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

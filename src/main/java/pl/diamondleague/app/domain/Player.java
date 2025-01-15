@@ -54,6 +54,10 @@ public class Player implements Serializable {
     @Column(name = "preferred_position", nullable = false)
     private Position preferredPosition;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private User appUser;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "player")
     @JsonIgnoreProperties(value = { "player" }, allowSetters = true)
     private Set<Rating> ratings = new HashSet<>();
@@ -161,6 +165,19 @@ public class Player implements Serializable {
 
     public void setPreferredPosition(Position preferredPosition) {
         this.preferredPosition = preferredPosition;
+    }
+
+    public User getAppUser() {
+        return this.appUser;
+    }
+
+    public void setAppUser(User user) {
+        this.appUser = user;
+    }
+
+    public Player appUser(User user) {
+        this.setAppUser(user);
+        return this;
     }
 
     public Set<Rating> getRatings() {

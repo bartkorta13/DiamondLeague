@@ -26,6 +26,7 @@ describe('Player Form Service', () => {
             height: expect.any(Object),
             yearOfBirth: expect.any(Object),
             preferredPosition: expect.any(Object),
+            appUser: expect.any(Object),
             favouriteClub: expect.any(Object),
           }),
         );
@@ -43,6 +44,7 @@ describe('Player Form Service', () => {
             height: expect.any(Object),
             yearOfBirth: expect.any(Object),
             preferredPosition: expect.any(Object),
+            appUser: expect.any(Object),
             favouriteClub: expect.any(Object),
           }),
         );

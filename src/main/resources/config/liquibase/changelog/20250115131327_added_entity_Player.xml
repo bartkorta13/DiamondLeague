@@ -32,6 +32,9 @@
             <column name="preferred_position" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="app_user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_player__app_user_id" />
+            </column>
             <column name="favourite_club_id" type="bigint">
                 <constraints nullable="true" />
             </column>

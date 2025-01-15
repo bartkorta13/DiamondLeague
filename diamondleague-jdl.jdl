@@ -22,7 +22,6 @@ entity Rating {
 
 entity Game {
     date Instant required
-    winners GameTeam
 }
 
 entity GameTeam {
@@ -46,13 +45,17 @@ enum Position {
 }
 
 relationship OneToMany {
-	Player to Rating{player required}
+	  Player to Rating{player required}
     Player to PlayerGame{player required}
     Player to GameTeam{captain required}
-	GameTeam to PlayerGame{gameTeam required}
+	  GameTeam to PlayerGame{gameTeam required}
     Stadium to Game{stadium required}
     Club to Player{favouriteClub}
     Game to GameTeam{game required}
+}
+
+relationship OneToOne {
+    GameTeam To Game{winners}
 }
 
 dto * with mapstruct

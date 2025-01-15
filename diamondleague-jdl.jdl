@@ -55,7 +55,7 @@ relationship OneToMany {
 }
 
 relationship OneToOne {
-    GameTeam To Game{winners}
+    GameTeam to Game{winners}
 }
 
 dto * with mapstruct

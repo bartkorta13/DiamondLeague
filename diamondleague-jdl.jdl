@@ -54,9 +54,5 @@ relationship OneToMany {
     Game to GameTeam{game required}
 }
 
-relationship OneToOne {
-    GameTeam to Game{winners}
-}
-
 dto * with mapstruct
 service * with serviceImpl

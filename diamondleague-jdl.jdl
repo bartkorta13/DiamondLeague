@@ -1,14 +1,14 @@
 entity Player {
-    firstName String required min(2) max(40)
-    lastName String required min(2) max(40)
-    nickname String required unique min(3) max(20)
+    firstName String required minlength(2) maxlength(40)
+    lastName String required minlength(2) maxlength(40)
+    nickname String required unique minlength(3) maxlength(40)
     height Integer min(100) max(250)
     yearOfBirth Integer min(1900) max(2050)
   	preferredPosition Position required
 }
 
 entity Club {
-	name String required unique min(3) max(50) 
+    name String required unique minlength(3) maxlength(50)
     logoPath String
 }
 
@@ -37,7 +37,7 @@ entity PlayerGame {
 }
 
 entity Stadium {
-    name String required min(2) max(50)
+    name String required minlength(2) maxlength(50)
     imagePath String
 }
 

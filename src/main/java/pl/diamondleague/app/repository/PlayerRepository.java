@@ -27,14 +27,14 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     }
 
     @Query(
-        value = "select player from Player player left join fetch player.favouriteClub",
+        value = "select player from Player player left join fetch player.appUser left join fetch player.favouriteClub",
         countQuery = "select count(player) from Player player"
     )
     Page<Player> findAllWithToOneRelationships(Pageable pageable);
 
-    @Query("select player from Player player left join fetch player.favouriteClub")
+    @Query("select player from Player player left join fetch player.appUser left join fetch player.favouriteClub")
     List<Player> findAllWithToOneRelationships();
 
-    @Query("select player from Player player left join fetch player.favouriteClub where player.id =:id")
+    @Query("select player from Player player left join fetch player.appUser left join fetch player.favouriteClub where player.id =:id")
     Optional<Player> findOneWithToOneRelationships(@Param("id") Long id);
 }

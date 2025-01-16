@@ -82,7 +82,7 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="appUser.id">
+            <th scope="col" jhiSortBy="appUser.login">
               <div class="d-flex">
                 <span jhiTranslate="diamondLeagueApp.player.appUser">App User</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -112,7 +112,7 @@
                 {{ { null: '', DEF: 'DEF', MID: 'MID', FW: 'FW' }[player.preferredPosition ?? 'null'] }}
               </td>
               <td>
-                {{ player.appUser?.id }}
+                {{ player.appUser?.login }}
               </td>
               <td>
                 @if (player.favouriteClub) {

@@ -10,7 +10,7 @@ export interface IPlayer {
   height?: number | null;
   yearOfBirth?: number | null;
   preferredPosition?: keyof typeof Position | null;
-  appUser?: Pick<IUser, 'id'> | null;
+  appUser?: Pick<IUser, 'id' | 'login'> | null;
   favouriteClub?: Pick<IClub, 'id' | 'name'> | null;
 }
 

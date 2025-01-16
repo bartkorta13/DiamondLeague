@@ -13,14 +13,15 @@ import pl.diamondleague.app.service.dto.UserDTO;
  */
 @Mapper(componentModel = "spring")
 public interface PlayerMapper extends EntityMapper<PlayerDTO, Player> {
-    @Mapping(target = "appUser", source = "appUser", qualifiedByName = "userId")
+    @Mapping(target = "appUser", source = "appUser", qualifiedByName = "userLogin")
     @Mapping(target = "favouriteClub", source = "favouriteClub", qualifiedByName = "clubName")
     PlayerDTO toDto(Player s);
 
-    @Named("userId")
+    @Named("userLogin")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    UserDTO toDtoUserId(User user);
+    @Mapping(target = "login", source = "login")
+    UserDTO toDtoUserLogin(User user);
 
     @Named("clubName")
     @BeanMapping(ignoreByDefault = true)

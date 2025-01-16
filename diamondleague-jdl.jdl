@@ -55,7 +55,7 @@ relationship ManyToOne {
 }
 
 relationship OneToOne {
-    Player{appUser} to User with builtInEntity
+    Player{appUser (login)} to User with builtInEntity
 }
 
 dto * with mapstruct

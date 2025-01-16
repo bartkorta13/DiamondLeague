@@ -50,6 +50,7 @@
   "name": "Player",
   "relationships": [
     {
+      "otherEntityField": "login",
       "otherEntityName": "user",
       "relationshipName": "appUser",
       "relationshipSide": "left",

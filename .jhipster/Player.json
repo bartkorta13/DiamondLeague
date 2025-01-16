@@ -57,31 +57,11 @@
       "relationshipWithBuiltInEntity": true
     },
     {
-      "otherEntityName": "rating",
-      "otherEntityRelationshipName": "player",
-      "relationshipName": "rating",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "playerGame",
-      "otherEntityRelationshipName": "player",
-      "relationshipName": "playerGame",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "gameTeam",
-      "otherEntityRelationshipName": "captain",
-      "relationshipName": "gameTeam",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityName": "club",
       "relationshipName": "favouriteClub",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-one"
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
   "searchEngine": "no",

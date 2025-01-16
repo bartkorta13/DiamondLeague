@@ -19,8 +19,7 @@
       },
       "id": "ID",
       "name": "Name",
-      "logoPath": "Logo Path",
-      "player": "Player"
+      "logoPath": "Logo Path"
     }
   }
 }

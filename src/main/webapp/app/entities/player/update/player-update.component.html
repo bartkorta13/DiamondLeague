@@ -196,12 +196,23 @@
             formControlName="favouriteClub"
             [compareWith]="compareClub"
           >
-            <option [ngValue]="null"></option>
+            @if (!editForm.get('favouriteClub')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
             @for (clubOption of clubsSharedCollection; track $index) {
               <option [ngValue]="clubOption">{{ clubOption.id }}</option>
             }
           </select>
         </div>
+        @if (
+          editForm.get(['favouriteClub'])!.invalid && (editForm.get(['favouriteClub'])!.dirty || editForm.get(['favouriteClub'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['favouriteClub'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
       </div>
 
       <div>

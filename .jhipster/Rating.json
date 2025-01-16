@@ -44,7 +44,7 @@
     {
       "otherEntityName": "player",
       "relationshipName": "player",
-      "relationshipSide": "right",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
     }

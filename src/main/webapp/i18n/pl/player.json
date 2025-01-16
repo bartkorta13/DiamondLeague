@@ -25,9 +25,6 @@
       "yearOfBirth": "Rok urodzenia",
       "preferredPosition": "Pozycja",
       "appUser": "Użytkownik",
-      "rating": "Rating",
-      "playerGame": "Mecz zawodnika",
-      "gameTeam": "Drużyna zawodnika",
       "favouriteClub": "Ulubiony Klub"
     }
   }

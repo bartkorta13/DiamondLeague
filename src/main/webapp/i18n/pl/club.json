@@ -19,8 +19,7 @@
       },
       "id": "ID",
       "name": "Nazwa",
-      "logoPath": "Ścieżka do Logo",
-      "player": "Zawodnik"
+      "logoPath": "Ścieżka do Logo"
     }
   }
 }

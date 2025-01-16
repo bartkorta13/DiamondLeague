@@ -93,7 +93,7 @@ class RatingResourceIT {
         // Add required entity
         Player player;
         if (TestUtil.findAll(em, Player.class).isEmpty()) {
-            player = PlayerResourceIT.createEntity();
+            player = PlayerResourceIT.createEntity(em);
             em.persist(player);
             em.flush();
         } else {
@@ -119,7 +119,7 @@ class RatingResourceIT {
         // Add required entity
         Player player;
         if (TestUtil.findAll(em, Player.class).isEmpty()) {
-            player = PlayerResourceIT.createUpdatedEntity();
+            player = PlayerResourceIT.createUpdatedEntity(em);
             em.persist(player);
             em.flush();
         } else {

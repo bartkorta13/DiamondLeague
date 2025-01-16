@@ -1,12 +1,9 @@
 package pl.diamondleague.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Game.
@@ -28,13 +25,8 @@ public class Game implements Serializable {
     @Column(name = "date", nullable = false)
     private Instant date;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
-    @JsonIgnoreProperties(value = { "playerGames", "captain", "game" }, allowSetters = true)
-    private Set<GameTeam> gameTeams = new HashSet<>();
-
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "games" }, allowSetters = true)
     private Stadium stadium;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -63,37 +55,6 @@ public class Game implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
-    }
-
-    public Set<GameTeam> getGameTeams() {
-        return this.gameTeams;
-    }
-
-    public void setGameTeams(Set<GameTeam> gameTeams) {
-        if (this.gameTeams != null) {
-            this.gameTeams.forEach(i -> i.setGame(null));
-        }
-        if (gameTeams != null) {
-            gameTeams.forEach(i -> i.setGame(this));
-        }
-        this.gameTeams = gameTeams;
-    }
-
-    public Game gameTeams(Set<GameTeam> gameTeams) {
-        this.setGameTeams(gameTeams);
-        return this;
-    }
-
-    public Game addGameTeam(GameTeam gameTeam) {
-        this.gameTeams.add(gameTeam);
-        gameTeam.setGame(this);
-        return this;
-    }
-
-    public Game removeGameTeam(GameTeam gameTeam) {
-        this.gameTeams.remove(gameTeam);
-        gameTeam.setGame(null);
-        return this;
     }
 
     public Stadium getStadium() {

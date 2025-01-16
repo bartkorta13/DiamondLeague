@@ -14,16 +14,9 @@
   "name": "Game",
   "relationships": [
     {
-      "otherEntityName": "gameTeam",
-      "otherEntityRelationshipName": "game",
-      "relationshipName": "gameTeam",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityName": "stadium",
       "relationshipName": "stadium",
-      "relationshipSide": "right",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
     }

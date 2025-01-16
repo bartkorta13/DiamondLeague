@@ -48,7 +48,7 @@
             formControlName="captain"
             [compareWith]="comparePlayer"
           >
-            @if (editForm.get(['captain'])!.value == null) {
+            @if (!editForm.get('captain')!.value) {
               <option [ngValue]="null" selected></option>
             }
             @for (playerOption of playersSharedCollection; track $index) {
@@ -67,7 +67,7 @@
         <div class="mb-3">
           <label class="form-label" for="field_game" jhiTranslate="diamondLeagueApp.gameTeam.game">Game</label>
           <select class="form-control" id="field_game" data-cy="game" name="game" formControlName="game" [compareWith]="compareGame">
-            @if (editForm.get(['game'])!.value == null) {
+            @if (!editForm.get('game')!.value) {
               <option [ngValue]="null" selected></option>
             }
             @for (gameOption of gamesSharedCollection; track $index) {

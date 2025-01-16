@@ -38,6 +38,7 @@ public class PlayerDTO implements Serializable {
 
     private UserDTO appUser;
 
+    @NotNull
     private ClubDTO favouriteClub;
 
     public Long getId() {

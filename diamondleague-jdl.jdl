@@ -44,14 +44,14 @@ enum Position {
     DEF, MID, FW
 }
 
-relationship OneToMany {
-	  Player to Rating{player required}
-    Player to PlayerGame{player required}
-    Player to GameTeam{captain required}
-	  GameTeam to PlayerGame{gameTeam required}
-    Stadium to Game{stadium required}
-    Club to Player{favouriteClub}
-    Game to GameTeam{game required}
+relationship ManyToOne {
+    Rating{player required} to Player
+    PlayerGame{player required} to Player
+    GameTeam{captain required} to Player
+    PlayerGame{gameTeam required} to GameTeam
+    Game{stadium required} to Stadium
+    Player{favouriteClub required} to Club
+    GameTeam{game required} to Game
 }
 
 relationship OneToOne {

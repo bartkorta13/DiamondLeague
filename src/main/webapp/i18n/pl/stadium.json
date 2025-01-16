@@ -19,8 +19,7 @@
       },
       "id": "ID",
       "name": "Name",
-      "imagePath": "Image Path",
-      "game": "Game"
+      "imagePath": "Image Path"
     }
   }
 }

@@ -64,7 +64,9 @@ export class PlayerFormService {
         validators: [Validators.required],
       }),
       appUser: new FormControl(playerRawValue.appUser),
-      favouriteClub: new FormControl(playerRawValue.favouriteClub),
+      favouriteClub: new FormControl(playerRawValue.favouriteClub, {
+        validators: [Validators.required],
+      }),
     });
   }
 

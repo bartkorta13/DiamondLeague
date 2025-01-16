@@ -41,12 +41,12 @@ public class PlayerGame implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "appUser", "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser", "favouriteClub" }, allowSetters = true)
     private Player player;
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "playerGames", "captain", "game" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "captain", "game" }, allowSetters = true)
     private GameTeam gameTeam;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

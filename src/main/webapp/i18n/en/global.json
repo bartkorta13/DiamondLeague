@@ -6,16 +6,15 @@
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "League Maintenance",
+        "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority",
-        "player": "Players",
-        "club": "Favourite Clubs",
-        "rating": "Player Ratings",
-        "game": "Games",
-        "gameTeam": "Teams",
-        "playerGame": "Player Games",
-        "stadium": "Stadiums"
+        "player": "Player",
+        "club": "Club",
+        "rating": "Rating",
+        "game": "Game",
+        "gameTeam": "Game Team",
+        "playerGame": "Player Game",
+        "stadium": "Stadium"
       },
       "account": {
         "main": "Account",

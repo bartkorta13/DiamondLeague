@@ -3,11 +3,8 @@ package pl.diamondleague.app.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static pl.diamondleague.app.domain.GameTeamTestSamples.*;
 import static pl.diamondleague.app.domain.GameTestSamples.*;
-import static pl.diamondleague.app.domain.PlayerGameTestSamples.*;
 import static pl.diamondleague.app.domain.PlayerTestSamples.*;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 import pl.diamondleague.app.web.rest.TestUtil;
 
@@ -25,28 +22,6 @@ class GameTeamTest {
 
         gameTeam2 = getGameTeamSample2();
         assertThat(gameTeam1).isNotEqualTo(gameTeam2);
-    }
-
-    @Test
-    void playerGameTest() {
-        GameTeam gameTeam = getGameTeamRandomSampleGenerator();
-        PlayerGame playerGameBack = getPlayerGameRandomSampleGenerator();
-
-        gameTeam.addPlayerGame(playerGameBack);
-        assertThat(gameTeam.getPlayerGames()).containsOnly(playerGameBack);
-        assertThat(playerGameBack.getGameTeam()).isEqualTo(gameTeam);
-
-        gameTeam.removePlayerGame(playerGameBack);
-        assertThat(gameTeam.getPlayerGames()).doesNotContain(playerGameBack);
-        assertThat(playerGameBack.getGameTeam()).isNull();
-
-        gameTeam.playerGames(new HashSet<>(Set.of(playerGameBack)));
-        assertThat(gameTeam.getPlayerGames()).containsOnly(playerGameBack);
-        assertThat(playerGameBack.getGameTeam()).isEqualTo(gameTeam);
-
-        gameTeam.setPlayerGames(new HashSet<>());
-        assertThat(gameTeam.getPlayerGames()).doesNotContain(playerGameBack);
-        assertThat(playerGameBack.getGameTeam()).isNull();
     }
 
     @Test

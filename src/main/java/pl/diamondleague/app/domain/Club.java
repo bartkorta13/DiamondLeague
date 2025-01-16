@@ -1,11 +1,8 @@
 package pl.diamondleague.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Club.
@@ -30,10 +27,6 @@ public class Club implements Serializable {
 
     @Column(name = "logo_path")
     private String logoPath;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "favouriteClub")
-    @JsonIgnoreProperties(value = { "appUser", "ratings", "playerGames", "gameTeams", "favouriteClub" }, allowSetters = true)
-    private Set<Player> players = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -74,37 +67,6 @@ public class Club implements Serializable {
 
     public void setLogoPath(String logoPath) {
         this.logoPath = logoPath;
-    }
-
-    public Set<Player> getPlayers() {
-        return this.players;
-    }
-
-    public void setPlayers(Set<Player> players) {
-        if (this.players != null) {
-            this.players.forEach(i -> i.setFavouriteClub(null));
-        }
-        if (players != null) {
-            players.forEach(i -> i.setFavouriteClub(this));
-        }
-        this.players = players;
-    }
-
-    public Club players(Set<Player> players) {
-        this.setPlayers(players);
-        return this;
-    }
-
-    public Club addPlayer(Player player) {
-        this.players.add(player);
-        player.setFavouriteClub(this);
-        return this;
-    }
-
-    public Club removePlayer(Player player) {
-        this.players.remove(player);
-        player.setFavouriteClub(null);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

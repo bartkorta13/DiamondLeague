@@ -21,6 +21,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import pl.diamondleague.app.IntegrationTest;
+import pl.diamondleague.app.domain.Club;
 import pl.diamondleague.app.domain.Player;
 import pl.diamondleague.app.domain.enumeration.Position;
 import pl.diamondleague.app.repository.PlayerRepository;
@@ -88,14 +89,25 @@ class PlayerResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Player createEntity() {
-        return new Player()
+    public static Player createEntity(EntityManager em) {
+        Player player = new Player()
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
             .nickname(DEFAULT_NICKNAME)
             .height(DEFAULT_HEIGHT)
             .yearOfBirth(DEFAULT_YEAR_OF_BIRTH)
             .preferredPosition(DEFAULT_PREFERRED_POSITION);
+        // Add required entity
+        Club club;
+        if (TestUtil.findAll(em, Club.class).isEmpty()) {
+            club = ClubResourceIT.createEntity();
+            em.persist(club);
+            em.flush();
+        } else {
+            club = TestUtil.findAll(em, Club.class).get(0);
+        }
+        player.setFavouriteClub(club);
+        return player;
     }
 
     /**
@@ -104,19 +116,30 @@ class PlayerResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Player createUpdatedEntity() {
-        return new Player()
+    public static Player createUpdatedEntity(EntityManager em) {
+        Player updatedPlayer = new Player()
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .nickname(UPDATED_NICKNAME)
             .height(UPDATED_HEIGHT)
             .yearOfBirth(UPDATED_YEAR_OF_BIRTH)
             .preferredPosition(UPDATED_PREFERRED_POSITION);
+        // Add required entity
+        Club club;
+        if (TestUtil.findAll(em, Club.class).isEmpty()) {
+            club = ClubResourceIT.createUpdatedEntity();
+            em.persist(club);
+            em.flush();
+        } else {
+            club = TestUtil.findAll(em, Club.class).get(0);
+        }
+        updatedPlayer.setFavouriteClub(club);
+        return updatedPlayer;
     }
 
     @BeforeEach
     public void initTest() {
-        player = createEntity();
+        player = createEntity(em);
     }
 
     @AfterEach

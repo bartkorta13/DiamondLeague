@@ -16,23 +16,16 @@
   "name": "GameTeam",
   "relationships": [
     {
-      "otherEntityName": "playerGame",
-      "otherEntityRelationshipName": "gameTeam",
-      "relationshipName": "playerGame",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityName": "player",
       "relationshipName": "captain",
-      "relationshipSide": "right",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
     },
     {
       "otherEntityName": "game",
       "relationshipName": "game",
-      "relationshipSide": "right",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
     }

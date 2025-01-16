@@ -18,15 +18,7 @@
     }
   ],
   "name": "Club",
-  "relationships": [
-    {
-      "otherEntityName": "player",
-      "otherEntityRelationshipName": "favouriteClub",
-      "relationshipName": "player",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

@@ -54,7 +54,7 @@
             formControlName="stadium"
             [compareWith]="compareStadium"
           >
-            @if (editForm.get(['stadium'])!.value == null) {
+            @if (!editForm.get('stadium')!.value) {
               <option [ngValue]="null" selected></option>
             }
             @for (stadiumOption of stadiumsSharedCollection; track $index) {

@@ -31,6 +31,7 @@
   "name": "PlayerGame",
   "relationships": [
     {
+      "otherEntityField": "nickname",
       "otherEntityName": "player",
       "relationshipName": "player",
       "relationshipSide": "left",

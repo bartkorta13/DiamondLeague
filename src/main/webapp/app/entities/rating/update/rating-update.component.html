@@ -181,7 +181,7 @@
               <option [ngValue]="null" selected></option>
             }
             @for (playerOption of playersSharedCollection; track $index) {
-              <option [ngValue]="playerOption">{{ playerOption.id }}</option>
+              <option [ngValue]="playerOption">{{ playerOption.nickname }}</option>
             }
           </select>
         </div>

@@ -42,6 +42,7 @@
   "name": "Rating",
   "relationships": [
     {
+      "otherEntityField": "nickname",
       "otherEntityName": "player",
       "relationshipName": "player",
       "relationshipSide": "left",

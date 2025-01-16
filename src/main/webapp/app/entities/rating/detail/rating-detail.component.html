@@ -39,7 +39,7 @@
           <dd>
             @if (rating()!.player) {
               <div>
-                <a [routerLink]="['/player', rating()!.player?.id, 'view']">{{ ratingRef.player?.id }}</a>
+                <a [routerLink]="['/player', rating()!.player?.id, 'view']">{{ ratingRef.player?.nickname }}</a>
               </div>
             }
           </dd>

@@ -45,12 +45,12 @@ enum Position {
 }
 
 relationship ManyToOne {
-    Rating{player required} to Player
-    PlayerGame{player required} to Player
-    GameTeam{captain required} to Player
+    Rating{player (nickname) required} to Player
+    PlayerGame{player (nickname) required} to Player
+    GameTeam{captain (nickname) required} to Player
     PlayerGame{gameTeam required} to GameTeam
-    Game{stadium required} to Stadium
-    Player{favouriteClub required} to Club
+    Game{stadium (name) required} to Stadium
+    Player{favouriteClub (name) required} to Club
     GameTeam{game required} to Game
 }
 

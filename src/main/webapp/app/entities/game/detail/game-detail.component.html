@@ -23,7 +23,7 @@
           <dd>
             @if (game()!.stadium) {
               <div>
-                <a [routerLink]="['/stadium', game()!.stadium?.id, 'view']">{{ gameRef.stadium?.id }}</a>
+                <a [routerLink]="['/stadium', game()!.stadium?.id, 'view']">{{ gameRef.stadium?.name }}</a>
               </div>
             }
           </dd>

@@ -49,7 +49,7 @@
           <dd>
             @if (player()!.favouriteClub) {
               <div>
-                <a [routerLink]="['/club', player()!.favouriteClub?.id, 'view']">{{ playerRef.favouriteClub?.id }}</a>
+                <a [routerLink]="['/club', player()!.favouriteClub?.id, 'view']">{{ playerRef.favouriteClub?.name }}</a>
               </div>
             }
           </dd>

@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.diamondleague.app.domain.GameTeam;
@@ -70,11 +72,15 @@ public class GameTeamServiceImpl implements GameTeamService {
         return gameTeamRepository.findAll().stream().map(gameTeamMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    public Page<GameTeamDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return gameTeamRepository.findAllWithEagerRelationships(pageable).map(gameTeamMapper::toDto);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Optional<GameTeamDTO> findOne(Long id) {
         LOG.debug("Request to get GameTeam : {}", id);
-        return gameTeamRepository.findById(id).map(gameTeamMapper::toDto);
+        return gameTeamRepository.findOneWithEagerRelationships(id).map(gameTeamMapper::toDto);
     }
 
     @Override

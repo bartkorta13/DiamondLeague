@@ -11,7 +11,7 @@ export interface IPlayer {
   yearOfBirth?: number | null;
   preferredPosition?: keyof typeof Position | null;
   appUser?: Pick<IUser, 'id'> | null;
-  favouriteClub?: Pick<IClub, 'id'> | null;
+  favouriteClub?: Pick<IClub, 'id' | 'name'> | null;
 }
 
 export type NewPlayer = Omit<IPlayer, 'id'> & { id: null };

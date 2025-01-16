@@ -4,7 +4,7 @@ import { IGame } from 'app/entities/game/game.model';
 export interface IGameTeam {
   id: number;
   goals?: number | null;
-  captain?: Pick<IPlayer, 'id'> | null;
+  captain?: Pick<IPlayer, 'id' | 'nickname'> | null;
   game?: Pick<IGame, 'id'> | null;
 }
 

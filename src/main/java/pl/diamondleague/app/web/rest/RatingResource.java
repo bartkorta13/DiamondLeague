@@ -133,10 +133,11 @@ public class RatingResource {
     /**
      * {@code GET  /ratings} : get all the ratings.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of ratings in body.
      */
     @GetMapping("")
-    public List<RatingDTO> getAllRatings() {
+    public List<RatingDTO> getAllRatings(@RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload) {
         LOG.debug("REST request to get all Ratings");
         return ratingService.findAll();
     }

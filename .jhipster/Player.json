@@ -57,6 +57,7 @@
       "relationshipWithBuiltInEntity": true
     },
     {
+      "otherEntityField": "name",
       "otherEntityName": "club",
       "relationshipName": "favouriteClub",
       "relationshipSide": "left",

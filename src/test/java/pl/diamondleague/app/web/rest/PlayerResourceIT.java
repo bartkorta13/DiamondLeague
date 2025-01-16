@@ -2,6 +2,7 @@ package pl.diamondleague.app.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static pl.diamondleague.app.domain.PlayerAsserts.*;
@@ -9,13 +10,19 @@ import static pl.diamondleague.app.web.rest.TestUtil.createUpdateProxyForBean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +33,7 @@ import pl.diamondleague.app.domain.Player;
 import pl.diamondleague.app.domain.enumeration.Position;
 import pl.diamondleague.app.repository.PlayerRepository;
 import pl.diamondleague.app.repository.UserRepository;
+import pl.diamondleague.app.service.PlayerService;
 import pl.diamondleague.app.service.dto.PlayerDTO;
 import pl.diamondleague.app.service.mapper.PlayerMapper;
 
@@ -33,6 +41,7 @@ import pl.diamondleague.app.service.mapper.PlayerMapper;
  * Integration tests for the {@link PlayerResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class PlayerResourceIT {
@@ -70,8 +79,14 @@ class PlayerResourceIT {
     @Autowired
     private UserRepository userRepository;
 
+    @Mock
+    private PlayerRepository playerRepositoryMock;
+
     @Autowired
     private PlayerMapper playerMapper;
+
+    @Mock
+    private PlayerService playerServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -278,6 +293,23 @@ class PlayerResourceIT {
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
             .andExpect(jsonPath("$.[*].yearOfBirth").value(hasItem(DEFAULT_YEAR_OF_BIRTH)))
             .andExpect(jsonPath("$.[*].preferredPosition").value(hasItem(DEFAULT_PREFERRED_POSITION.toString())));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllPlayersWithEagerRelationshipsIsEnabled() throws Exception {
+        when(playerServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPlayerMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(playerServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllPlayersWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(playerServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPlayerMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
+        verify(playerRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test

@@ -7,7 +7,7 @@ export interface IPlayerGame {
   assists?: number | null;
   attackScore?: number | null;
   defenseScore?: number | null;
-  player?: Pick<IPlayer, 'id'> | null;
+  player?: Pick<IPlayer, 'id' | 'nickname'> | null;
   gameTeam?: Pick<IGameTeam, 'id'> | null;
 }
 

@@ -8,7 +8,7 @@ export interface IRating {
   defense?: number | null;
   engagement?: number | null;
   overall?: number | null;
-  player?: Pick<IPlayer, 'id'> | null;
+  player?: Pick<IPlayer, 'id' | 'nickname'> | null;
 }
 
 export type NewRating = Omit<IRating, 'id'> & { id: null };

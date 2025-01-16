@@ -68,7 +68,7 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="player.id">
+            <th scope="col" jhiSortBy="player.nickname">
               <div class="d-flex">
                 <span jhiTranslate="diamondLeagueApp.playerGame.player">Player</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -96,7 +96,7 @@
               <td>
                 @if (playerGame.player) {
                   <div>
-                    <a [routerLink]="['/player', playerGame.player.id, 'view']">{{ playerGame.player.id }}</a>
+                    <a [routerLink]="['/player', playerGame.player.id, 'view']">{{ playerGame.player.nickname }}</a>
                   </div>
                 }
               </td>

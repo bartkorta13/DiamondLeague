@@ -16,6 +16,7 @@
   "name": "GameTeam",
   "relationships": [
     {
+      "otherEntityField": "nickname",
       "otherEntityName": "player",
       "relationshipName": "captain",
       "relationshipSide": "left",

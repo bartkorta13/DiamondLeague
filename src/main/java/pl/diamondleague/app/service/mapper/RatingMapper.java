@@ -11,11 +11,12 @@ import pl.diamondleague.app.service.dto.RatingDTO;
  */
 @Mapper(componentModel = "spring")
 public interface RatingMapper extends EntityMapper<RatingDTO, Rating> {
-    @Mapping(target = "player", source = "player", qualifiedByName = "playerId")
+    @Mapping(target = "player", source = "player", qualifiedByName = "playerNickname")
     RatingDTO toDto(Rating s);
 
-    @Named("playerId")
+    @Named("playerNickname")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    PlayerDTO toDtoPlayerId(Player player);
+    @Mapping(target = "nickname", source = "nickname")
+    PlayerDTO toDtoPlayerNickname(Player player);
 }

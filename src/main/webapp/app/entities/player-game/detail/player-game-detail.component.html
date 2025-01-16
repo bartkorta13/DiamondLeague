@@ -35,7 +35,7 @@
           <dd>
             @if (playerGame()!.player) {
               <div>
-                <a [routerLink]="['/player', playerGame()!.player?.id, 'view']">{{ playerGameRef.player?.id }}</a>
+                <a [routerLink]="['/player', playerGame()!.player?.id, 'view']">{{ playerGameRef.player?.nickname }}</a>
               </div>
             }
           </dd>

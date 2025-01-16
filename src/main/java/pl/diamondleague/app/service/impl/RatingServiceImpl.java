@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.diamondleague.app.domain.Rating;
@@ -70,11 +72,15 @@ public class RatingServiceImpl implements RatingService {
         return ratingRepository.findAll().stream().map(ratingMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    public Page<RatingDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return ratingRepository.findAllWithEagerRelationships(pageable).map(ratingMapper::toDto);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Optional<RatingDTO> findOne(Long id) {
         LOG.debug("Request to get Rating : {}", id);
-        return ratingRepository.findById(id).map(ratingMapper::toDto);
+        return ratingRepository.findOneWithEagerRelationships(id).map(ratingMapper::toDto);
     }
 
     @Override

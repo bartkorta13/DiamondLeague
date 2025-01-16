@@ -133,10 +133,11 @@ public class GameResource {
     /**
      * {@code GET  /games} : get all the games.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of games in body.
      */
     @GetMapping("")
-    public List<GameDTO> getAllGames() {
+    public List<GameDTO> getAllGames(@RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload) {
         LOG.debug("REST request to get all Games");
         return gameService.findAll();
     }

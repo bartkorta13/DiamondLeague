@@ -4,7 +4,7 @@ import { IStadium } from 'app/entities/stadium/stadium.model';
 export interface IGame {
   id: number;
   date?: dayjs.Dayjs | null;
-  stadium?: Pick<IStadium, 'id'> | null;
+  stadium?: Pick<IStadium, 'id' | 'name'> | null;
 }
 
 export type NewGame = Omit<IGame, 'id'> & { id: null };

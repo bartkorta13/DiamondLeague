@@ -23,7 +23,7 @@
           <dd>
             @if (gameTeam()!.captain) {
               <div>
-                <a [routerLink]="['/player', gameTeam()!.captain?.id, 'view']">{{ gameTeamRef.captain?.id }}</a>
+                <a [routerLink]="['/player', gameTeam()!.captain?.id, 'view']">{{ gameTeamRef.captain?.nickname }}</a>
               </div>
             }
           </dd>

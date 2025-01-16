@@ -1,9 +1,6 @@
 package pl.diamondleague.app.service.impl;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -67,9 +64,9 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<RatingDTO> findAll() {
+    public Page<RatingDTO> findAll(Pageable pageable) {
         LOG.debug("Request to get all Ratings");
-        return ratingRepository.findAll().stream().map(ratingMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+        return ratingRepository.findAll(pageable).map(ratingMapper::toDto);
     }
 
     public Page<RatingDTO> findAllWithEagerRelationships(Pageable pageable) {

@@ -60,3 +60,7 @@ relationship OneToOne {
 
 dto * with mapstruct
 service * with serviceImpl
+paginate Game with pagination
+paginate GameTeam with pagination
+paginate Rating with pagination
+paginate PlayerGame with pagination

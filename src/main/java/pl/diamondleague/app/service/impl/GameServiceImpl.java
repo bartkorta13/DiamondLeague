@@ -1,9 +1,6 @@
 package pl.diamondleague.app.service.impl;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -67,9 +64,9 @@ public class GameServiceImpl implements GameService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<GameDTO> findAll() {
+    public Page<GameDTO> findAll(Pageable pageable) {
         LOG.debug("Request to get all Games");
-        return gameRepository.findAll().stream().map(gameMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+        return gameRepository.findAll(pageable).map(gameMapper::toDto);
     }
 
     public Page<GameDTO> findAllWithEagerRelationships(Pageable pageable) {

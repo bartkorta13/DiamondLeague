@@ -1,6 +1,5 @@
 package pl.diamondleague.app.service;
 
-import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,9 +36,10 @@ public interface PlayerGameService {
     /**
      * Get all the playerGames.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<PlayerGameDTO> findAll();
+    Page<PlayerGameDTO> findAll(Pageable pageable);
 
     /**
      * Get all the playerGames with eager load of many-to-many relationships.

@@ -29,6 +29,7 @@
     }
   ],
   "name": "PlayerGame",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityField": "nickname",

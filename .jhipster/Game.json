@@ -12,6 +12,7 @@
     }
   ],
   "name": "Game",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityField": "name",

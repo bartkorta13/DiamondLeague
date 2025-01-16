@@ -10,13 +10,18 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.diamondleague.app.repository.PlayerGameRepository;
 import pl.diamondleague.app.service.PlayerGameService;
 import pl.diamondleague.app.service.dto.PlayerGameDTO;
 import pl.diamondleague.app.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -133,15 +138,24 @@ public class PlayerGameResource {
     /**
      * {@code GET  /player-games} : get all the playerGames.
      *
+     * @param pageable the pagination information.
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of playerGames in body.
      */
     @GetMapping("")
-    public List<PlayerGameDTO> getAllPlayerGames(
+    public ResponseEntity<List<PlayerGameDTO>> getAllPlayerGames(
+        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
-        LOG.debug("REST request to get all PlayerGames");
-        return playerGameService.findAll();
+        LOG.debug("REST request to get a page of PlayerGames");
+        Page<PlayerGameDTO> page;
+        if (eagerload) {
+            page = playerGameService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = playerGameService.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**

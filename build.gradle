@@ -18,8 +18,11 @@ version = "0.0.1-SNAPSHOT"
 
 description = ""
 
-sourceCompatibility=17
-targetCompatibility=17
+java {
+  sourceCompatibility = '17'
+  targetCompatibility = '17'
+}
+
 assert System.properties["java.specification.version"] == "17" || "21" || "23"
 
 ext {
@@ -88,7 +91,7 @@ test {
     // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
     // ignoreFailures true
     reports.html.required = false
-    testLogging.exceptionFormat "full"
+    testLogging.exceptionFormat = 'full'
 }
 
 check.dependsOn integrationTest

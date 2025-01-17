@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "date": "Date",
-      "stadium": "Stadium"
+      "stadium": "Stadium",
+      "gameTeams": "Game Teams"
     }
   }
 }

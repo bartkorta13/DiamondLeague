@@ -34,6 +34,7 @@
     {
       "otherEntityField": "nickname",
       "otherEntityName": "player",
+      "otherEntityRelationshipName": "games",
       "relationshipName": "player",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
@@ -41,6 +42,7 @@
     },
     {
       "otherEntityName": "gameTeam",
+      "otherEntityRelationshipName": "playerGames",
       "relationshipName": "gameTeam",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",

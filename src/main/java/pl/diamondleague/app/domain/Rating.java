@@ -52,7 +52,7 @@ public class Rating implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "appUser", "favouriteClub" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser", "favouriteClub", "ratings", "games", "teams" }, allowSetters = true)
     private Player player;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

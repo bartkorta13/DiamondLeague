@@ -52,6 +52,7 @@
     {
       "otherEntityField": "login",
       "otherEntityName": "user",
+      "otherEntityRelationshipName": "player",
       "relationshipName": "appUser",
       "relationshipSide": "left",
       "relationshipType": "one-to-one",
@@ -60,10 +61,32 @@
     {
       "otherEntityField": "name",
       "otherEntityName": "club",
+      "otherEntityRelationshipName": "players",
       "relationshipName": "favouriteClub",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "ratings",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "playerGame",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "games",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "gameTeam",
+      "otherEntityRelationshipName": "captain",
+      "relationshipName": "teams",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

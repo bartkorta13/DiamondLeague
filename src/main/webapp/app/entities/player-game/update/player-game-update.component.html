@@ -108,7 +108,7 @@
             formControlName="player"
             [compareWith]="comparePlayer"
           >
-            @if (!editForm.get('player')!.value) {
+            @if (editForm.get(['player'])!.value == null) {
               <option [ngValue]="null" selected></option>
             }
             @for (playerOption of playersSharedCollection; track $index) {
@@ -134,7 +134,7 @@
             formControlName="gameTeam"
             [compareWith]="compareGameTeam"
           >
-            @if (!editForm.get('gameTeam')!.value) {
+            @if (editForm.get(['gameTeam'])!.value == null) {
               <option [ngValue]="null" selected></option>
             }
             @for (gameTeamOption of gameTeamsSharedCollection; track $index) {

@@ -1,8 +1,11 @@
 package pl.diamondleague.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Stadium.
@@ -27,6 +30,10 @@ public class Stadium implements Serializable {
 
     @Column(name = "image_path")
     private String imagePath;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stadium")
+    @JsonIgnoreProperties(value = { "stadium", "gameTeams" }, allowSetters = true)
+    private Set<Game> games = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -67,6 +74,37 @@ public class Stadium implements Serializable {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public Set<Game> getGames() {
+        return this.games;
+    }
+
+    public void setGames(Set<Game> games) {
+        if (this.games != null) {
+            this.games.forEach(i -> i.setStadium(null));
+        }
+        if (games != null) {
+            games.forEach(i -> i.setStadium(this));
+        }
+        this.games = games;
+    }
+
+    public Stadium games(Set<Game> games) {
+        this.setGames(games);
+        return this;
+    }
+
+    public Stadium addGames(Game game) {
+        this.games.add(game);
+        game.setStadium(this);
+        return this;
+    }
+
+    public Stadium removeGames(Game game) {
+        this.games.remove(game);
+        game.setStadium(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

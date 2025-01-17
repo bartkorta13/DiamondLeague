@@ -196,7 +196,7 @@
             formControlName="favouriteClub"
             [compareWith]="compareClub"
           >
-            @if (!editForm.get('favouriteClub')!.value) {
+            @if (editForm.get(['favouriteClub'])!.value == null) {
               <option [ngValue]="null" selected></option>
             }
             @for (clubOption of clubsSharedCollection; track $index) {

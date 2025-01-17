@@ -19,6 +19,7 @@
     {
       "otherEntityField": "nickname",
       "otherEntityName": "player",
+      "otherEntityRelationshipName": "teams",
       "relationshipName": "captain",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
@@ -26,10 +27,18 @@
     },
     {
       "otherEntityName": "game",
+      "otherEntityRelationshipName": "gameTeams",
       "relationshipName": "game",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "playerGame",
+      "otherEntityRelationshipName": "gameTeam",
+      "relationshipName": "playerGames",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

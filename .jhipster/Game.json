@@ -17,10 +17,18 @@
     {
       "otherEntityField": "name",
       "otherEntityName": "stadium",
+      "otherEntityRelationshipName": "games",
       "relationshipName": "stadium",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "gameTeam",
+      "otherEntityRelationshipName": "game",
+      "relationshipName": "gameTeams",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

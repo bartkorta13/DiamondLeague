@@ -1,9 +1,12 @@
 package pl.diamondleague.app.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static pl.diamondleague.app.domain.GameTeamTestSamples.*;
 import static pl.diamondleague.app.domain.GameTestSamples.*;
 import static pl.diamondleague.app.domain.StadiumTestSamples.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import pl.diamondleague.app.web.rest.TestUtil;
 
@@ -33,5 +36,27 @@ class GameTest {
 
         game.stadium(null);
         assertThat(game.getStadium()).isNull();
+    }
+
+    @Test
+    void gameTeamsTest() {
+        Game game = getGameRandomSampleGenerator();
+        GameTeam gameTeamBack = getGameTeamRandomSampleGenerator();
+
+        game.addGameTeams(gameTeamBack);
+        assertThat(game.getGameTeams()).containsOnly(gameTeamBack);
+        assertThat(gameTeamBack.getGame()).isEqualTo(game);
+
+        game.removeGameTeams(gameTeamBack);
+        assertThat(game.getGameTeams()).doesNotContain(gameTeamBack);
+        assertThat(gameTeamBack.getGame()).isNull();
+
+        game.gameTeams(new HashSet<>(Set.of(gameTeamBack)));
+        assertThat(game.getGameTeams()).containsOnly(gameTeamBack);
+        assertThat(gameTeamBack.getGame()).isEqualTo(game);
+
+        game.setGameTeams(new HashSet<>());
+        assertThat(game.getGameTeams()).doesNotContain(gameTeamBack);
+        assertThat(gameTeamBack.getGame()).isNull();
     }
 }

@@ -45,17 +45,17 @@ enum Position {
 }
 
 relationship ManyToOne {
-    Rating{player (nickname) required} to Player
-    PlayerGame{player (nickname) required} to Player
-    GameTeam{captain (nickname) required} to Player
-    PlayerGame{gameTeam required} to GameTeam
-    Game{stadium (name) required} to Stadium
-    Player{favouriteClub (name) required} to Club
-    GameTeam{game required} to Game
+    Rating{player (nickname) required} to Player{ratings}
+    PlayerGame{player (nickname) required} to Player{games}
+    GameTeam{captain (nickname) required} to Player{teams}
+    PlayerGame{gameTeam required} to GameTeam{playerGames}
+    Game{stadium (name) required} to Stadium{games}
+    Player{favouriteClub (name) required} to Club{players}
+    GameTeam{game required} to Game{gameTeams}
 }
 
 relationship OneToOne {
-    Player{appUser (login)} to User with builtInEntity
+    Player{appUser (login)} to User{player} with builtInEntity
 }
 
 dto * with mapstruct

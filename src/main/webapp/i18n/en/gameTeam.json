@@ -20,7 +20,8 @@
       "id": "ID",
       "goals": "Goals",
       "captain": "Captain",
-      "game": "Game"
+      "game": "Game",
+      "playerGames": "Player Games"
     }
   }
 }

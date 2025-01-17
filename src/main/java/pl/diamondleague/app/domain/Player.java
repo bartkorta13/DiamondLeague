@@ -1,8 +1,11 @@
 package pl.diamondleague.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import pl.diamondleague.app.domain.enumeration.Position;
 
 /**
@@ -57,7 +60,20 @@ public class Player implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
+    @JsonIgnoreProperties(value = { "players" }, allowSetters = true)
     private Club favouriteClub;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "player")
+    @JsonIgnoreProperties(value = { "player" }, allowSetters = true)
+    private Set<Rating> ratings = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "player")
+    @JsonIgnoreProperties(value = { "player", "gameTeam" }, allowSetters = true)
+    private Set<PlayerGame> games = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "captain")
+    @JsonIgnoreProperties(value = { "captain", "game", "playerGames" }, allowSetters = true)
+    private Set<GameTeam> teams = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -175,6 +191,99 @@ public class Player implements Serializable {
 
     public Player favouriteClub(Club club) {
         this.setFavouriteClub(club);
+        return this;
+    }
+
+    public Set<Rating> getRatings() {
+        return this.ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        if (this.ratings != null) {
+            this.ratings.forEach(i -> i.setPlayer(null));
+        }
+        if (ratings != null) {
+            ratings.forEach(i -> i.setPlayer(this));
+        }
+        this.ratings = ratings;
+    }
+
+    public Player ratings(Set<Rating> ratings) {
+        this.setRatings(ratings);
+        return this;
+    }
+
+    public Player addRatings(Rating rating) {
+        this.ratings.add(rating);
+        rating.setPlayer(this);
+        return this;
+    }
+
+    public Player removeRatings(Rating rating) {
+        this.ratings.remove(rating);
+        rating.setPlayer(null);
+        return this;
+    }
+
+    public Set<PlayerGame> getGames() {
+        return this.games;
+    }
+
+    public void setGames(Set<PlayerGame> playerGames) {
+        if (this.games != null) {
+            this.games.forEach(i -> i.setPlayer(null));
+        }
+        if (playerGames != null) {
+            playerGames.forEach(i -> i.setPlayer(this));
+        }
+        this.games = playerGames;
+    }
+
+    public Player games(Set<PlayerGame> playerGames) {
+        this.setGames(playerGames);
+        return this;
+    }
+
+    public Player addGames(PlayerGame playerGame) {
+        this.games.add(playerGame);
+        playerGame.setPlayer(this);
+        return this;
+    }
+
+    public Player removeGames(PlayerGame playerGame) {
+        this.games.remove(playerGame);
+        playerGame.setPlayer(null);
+        return this;
+    }
+
+    public Set<GameTeam> getTeams() {
+        return this.teams;
+    }
+
+    public void setTeams(Set<GameTeam> gameTeams) {
+        if (this.teams != null) {
+            this.teams.forEach(i -> i.setCaptain(null));
+        }
+        if (gameTeams != null) {
+            gameTeams.forEach(i -> i.setCaptain(this));
+        }
+        this.teams = gameTeams;
+    }
+
+    public Player teams(Set<GameTeam> gameTeams) {
+        this.setTeams(gameTeams);
+        return this;
+    }
+
+    public Player addTeams(GameTeam gameTeam) {
+        this.teams.add(gameTeam);
+        gameTeam.setCaptain(this);
+        return this;
+    }
+
+    public Player removeTeams(GameTeam gameTeam) {
+        this.teams.remove(gameTeam);
+        gameTeam.setCaptain(null);
         return this;
     }
 

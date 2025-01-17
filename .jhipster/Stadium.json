@@ -18,7 +18,15 @@
     }
   ],
   "name": "Stadium",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "game",
+      "otherEntityRelationshipName": "stadium",
+      "relationshipName": "games",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

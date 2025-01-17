@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A GameTeam.
@@ -28,13 +30,17 @@ public class GameTeam implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "appUser", "favouriteClub" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser", "favouriteClub", "ratings", "games", "teams" }, allowSetters = true)
     private Player captain;
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "stadium" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "stadium", "gameTeams" }, allowSetters = true)
     private Game game;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "gameTeam")
+    @JsonIgnoreProperties(value = { "player", "gameTeam" }, allowSetters = true)
+    private Set<PlayerGame> playerGames = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -87,6 +93,37 @@ public class GameTeam implements Serializable {
 
     public GameTeam game(Game game) {
         this.setGame(game);
+        return this;
+    }
+
+    public Set<PlayerGame> getPlayerGames() {
+        return this.playerGames;
+    }
+
+    public void setPlayerGames(Set<PlayerGame> playerGames) {
+        if (this.playerGames != null) {
+            this.playerGames.forEach(i -> i.setGameTeam(null));
+        }
+        if (playerGames != null) {
+            playerGames.forEach(i -> i.setGameTeam(this));
+        }
+        this.playerGames = playerGames;
+    }
+
+    public GameTeam playerGames(Set<PlayerGame> playerGames) {
+        this.setPlayerGames(playerGames);
+        return this;
+    }
+
+    public GameTeam addPlayerGames(PlayerGame playerGame) {
+        this.playerGames.add(playerGame);
+        playerGame.setGameTeam(this);
+        return this;
+    }
+
+    public GameTeam removePlayerGames(PlayerGame playerGame) {
+        this.playerGames.remove(playerGame);
+        playerGame.setGameTeam(null);
         return this;
     }
 
